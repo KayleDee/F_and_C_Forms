@@ -21,3 +21,15 @@ def hey_you(request):
         return render(request, "hey.html", {"A": user_name})
     else:
         return render(request, "hey.html")
+    
+def your_order(request):
+    form = forms.can_i_take_your_order(request.GET)
+    if form.is_valid():
+        burger = form.cleaned_data["burger"]
+        fries = form.cleaned_data["fries"]
+        drinks = form.cleaned_data["drink"]
+        total = burger * 4.50 + fries * 1.50 + drinks * 1.00 
+
+        return render(request, "order.html", {"B": burger, "F": fries, "total": total})
+    else:
+        return render(request, "order.html")
