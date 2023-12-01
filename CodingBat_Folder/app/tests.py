@@ -24,13 +24,13 @@ class Test_No_Teen_Sum(SimpleTestCase):
         self.assertContains(response, 3)
 class Test_XYZ_Theres(SimpleTestCase):
     def testxy(self):
-        response = self.client.get("/string-2/xyz-there/?xyz=xy")
-        self.assertContains(response, False)
+        response = self.client.get("/string-2/xyz-there/?xyz=abcxyz")
+        self.assertContains(response, True)
     def testx(self):
-        response = self.client.get("/string-2/xyz-there/?xyz=x")
+        response = self.client.get("/string-2/xyz-there/?xyz=abc.xyz")
         self.assertContains(response, False)
     def testxyz(self):
-        response = self.client.get("/string-2/xyz-there/?xyz=xyz")
+        response = self.client.get("/string-2/xyz-there/?xyz=xyz.abc")
         self.assertContains(response, True)
 class Test_Centered_Average(SimpleTestCase):
      def test1(self):
